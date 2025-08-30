@@ -1,0 +1,40 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./dist/index.js",
+    "server": "node --watch ./dist/index.js",
+    "watch": "tsc -w",
+    "build": "tsc && npm run copyfiles",
+    "dev": "concurrently \"npm run watch\" \"npm run server\" \"npm run watch-views\"",
+    "copyfiles": "copyfiles -u 1 \"src/views/**/*\" dist/",
+    "watch-views": "nodemon --watch src/views --ext ejs --exec \"npm run copyfiles\""
+  },
+  "dependencies": {
+    "@prisma/client": "^6.11.1",
+    "concurrently": "^9.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.0.0",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "nodemailer": "^7.0.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.13",
+    "@types/nodemailer": "^6.4.17",
+    "copyfiles": "^2.4.1",
+    "nodemon": "^3.1.10",
+    "prisma": "^6.11.1",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  },
+  "keywords": []
+}
