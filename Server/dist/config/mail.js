@@ -1,18 +1,23 @@
 import nodemailer from "nodemailer";
 export const transporter = nodemailer.createTransport({
-    host: "",
-    port: 587,
-    secure: false, // true for 465, false for other ports
+    host: process.env.EMAIL_HOST,
+    port: process.env.EMAIL_PORT,
+    secure: process.env.EMAIL_PORT,
     auth: {
-        user: "maddison53@ethereal.email",
-        pass: "jn7jnAPss4f63QBp6D",
+        user: process.env.EMAIL_FROM,
+        pass: process.env.EMAIL_PASSWORD,
     },
 });
 export const sendEmail = async (to, subject, body) => {
     await transporter.sendMail({
-        from: process.env.FROM_EMAIL,
+        from: process.env.EMAIL_FROM,
         to: to,
         subject: subject,
         html: body,
+        headers: {
+            "X-Priority": "1",
+            "X-MSMail-Priority": "High",
+            Importance: "High",
+        },
     });
 };
