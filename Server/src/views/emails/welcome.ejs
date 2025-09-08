@@ -18,7 +18,7 @@
         overflow: hidden;
       }
       .header {
-        background: #2563eb;
+        background: #ff0055;
         padding: 20px;
         text-align: center;
         color: #fff;
@@ -27,6 +27,7 @@
         padding: 25px;
         color: #333;
         line-height: 1.6;
+        text-align: center;
       }
       .footer {
         background: #f4f6f8;
@@ -37,36 +38,84 @@
       }
       .btn {
         display: inline-block;
-        padding: 12px 20px;
-        margin: 15px 0;
-        background: #2563eb;
+        padding: 14px 24px;
+        margin: 20px 0;
+        background: #ff0055;
         color: #fff !important;
         text-decoration: none;
+        font-weight: bold;
         border-radius: 6px;
+      }
+      .social-icons img {
+        width: 28px;
+        margin: 0 6px;
+      }
+      /* preheader (hidden preview text) */
+      .preheader {
+        display: none !important;
+        visibility: hidden;
+        opacity: 0;
+        color: transparent;
+        height: 0;
+        width: 0;
+        overflow: hidden;
       }
     </style>
   </head>
   <body>
+    <!-- inbox preview text -->
+    <div class="preheader">
+      Hey <%= name || 'there' %> — upload multiple images, let bots & users
+      vote, see the winner!
+    </div>
+
     <div class="container">
+      <!-- Header -->
       <div class="header">
-        <h2>📧 Welcome to Our Platform</h2>
+        <h2>🔥 Clash Your Images & Find the Winner</h2>
       </div>
+
+      <!-- Hero Animation -->
       <div class="content">
-        <p>Dear <%= name %>,</p>
-        <p>
-          We’re thrilled to have you with us. This is a confirmation that your
-          account has been successfully created.
+        <p style="margin-top: 0; margin-bottom: 10px">
+          Hey <strong><%= name || 'there' %></strong> 👋
         </p>
-        <p>Please click the button below to explore your dashboard:</p>
-        <a href="https://example.com/dashboard" class="btn">Go to Dashboard</a>
+
+        <img
+          src="<%= heroGifUrl %>"
+          alt="Clash demo for <%= name || 'you' %>"
+          style="max-width: 100%; border-radius: 12px; margin: 12px 0 20px"
+        />
+
         <p>
-          If you have any questions, just reply to this email — we’re always
-          happy to help.
+          Clash is where <b>images compete</b>. Upload multiple images, let bots
+          and users clash & vote, and watch the most loved one win 🏆
         </p>
-        <p>Best regards,<br />The Company Team</p>
+
+        <a href="<%= ctaLink %>" class="btn">Start Your First Clash</a>
       </div>
+
+      <!-- Social Icons -->
+      <div class="content">
+        <p style="font-size: 14px; color: #666; margin-top: 0">
+          Share your Clashes on:
+        </p>
+        <div class="social-icons">
+          <a href="<%= twitterUrl %>"
+            ><img src="<%= twitterIcon %>" alt="Twitter"
+          /></a>
+          <a href="<%= instagramUrl %>"
+            ><img src="<%= instagramIcon %>" alt="Instagram"
+          /></a>
+          <a href="<%= linkedinUrl %>"
+            ><img src="<%= linkedinIcon %>" alt="LinkedIn"
+          /></a>
+        </div>
+      </div>
+
+      <!-- Footer -->
       <div class="footer">
-        <p>© <%= year %> Your Company. All rights reserved.</p>
+        <p>© <%= year %> Clash. All rights reserved.</p>
       </div>
     </div>
   </body>

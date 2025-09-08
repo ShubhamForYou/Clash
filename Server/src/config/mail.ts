@@ -10,16 +10,17 @@ export const transporter = nodemailer.createTransport({
   },
 } as SMTPTransport.Options);
 
-export const sendEmail = async (to: string, subject: string, body: string) => {
+export const sendEmail = async (to: string, subject: string, html: string) => {
   await transporter.sendMail({
-  from: process.env.EMAIL_FROM,
-  to: to,
-  subject: subject,
-  html: body,
-  headers: {
-    "X-Priority": "1",
-    "X-MSMail-Priority": "High",
-    Importance: "High",
+    from: `"Clash Team" <${process.env.EMAIL_FROM}>`,
+    to: to,
+    subject: subject,
+    html: html,
+    headers: {
+      "X-Priority": "1",
+      "X-MSMail-Priority": "High",
+      Importance: "High",
     },
   });
 };
+  

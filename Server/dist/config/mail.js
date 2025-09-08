@@ -8,12 +8,12 @@ export const transporter = nodemailer.createTransport({
         pass: process.env.EMAIL_PASSWORD,
     },
 });
-export const sendEmail = async (to, subject, body) => {
+export const sendEmail = async (to, subject, html) => {
     await transporter.sendMail({
-        from: process.env.EMAIL_FROM,
+        from: `"Clash Team" <${process.env.EMAIL_FROM}>`,
         to: to,
         subject: subject,
-        html: body,
+        html: html,
         headers: {
             "X-Priority": "1",
             "X-MSMail-Priority": "High",
